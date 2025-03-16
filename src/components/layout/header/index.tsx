@@ -10,6 +10,7 @@ import { ShoppingBag } from "lucide-react";
 import logo from "../../../../public/logo.png"
 import Image from "next/image";
 import Link from "next/link";
+import { Sidebar } from "@/features/shared/sidebar";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -84,12 +85,7 @@ const Navbar = () => {
             <Button className="bg-gradient-to-r from-[#ff6432] to-[#ffa228] hover:opacity-90 text-white border-none">
               Login
             </Button>
-            <Link
-              href="/basket"
-              className="text-white hover:text-[#ff6432] transition-colors"
-            >
-              <ShoppingBag className="w-6 h-6" />
-            </Link>
+            <Sidebar/>
           </div>
 
           {/* Mobile Menu */}

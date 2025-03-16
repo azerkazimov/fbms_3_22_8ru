@@ -4,7 +4,7 @@ import ClientPizzaList from "./client-pizza-list"
 
 export default async function PizzaList() {
   // Fetch directly from the API route in a server component
-  const response = await fetch(`${process.env.NEXT_PUBLIC_BASE_URL || ""}/api/pizzas`)
+  const response = await fetch(`${process.env.API_HOST || ""}/api/pizzas`)
 
   if (!response.ok) {
     // Handle error state - could return an error component

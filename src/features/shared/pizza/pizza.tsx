@@ -1,67 +1,55 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Image from "next/image"
-import useCardStore from "@/store/card-store"
+import { ProductProps } from "@/features/helpers/interfaces/product-props";
+import useCardStore from "@/store/card-store";
+import Image from "next/image";
+import { useState } from "react";
+import QuantitySelector from "../quantity-selector";
 
-
-interface PizzaProps {
-  id: number
-  category: string
-  name: string
-  price: number
-  image: string
-  description: string
-}
-
-export default function Pizza({ id, name, price, image, description }: PizzaProps) {
-  const [count, setCount] = useState(1)
-  const fixPrice = price
-  const [prices, setPrice] = useState(fixPrice)
-  const [imgSize, setImgSize] = useState("1")
-  const [size, setSize] = useState("S")
-  const addToCard = useCardStore((state) => state.addToCard)
-
-  useEffect(() => {
-    setPrice(Number((count * fixPrice).toFixed(2)))
-  }, [count, fixPrice])
-
-  const handleDecrement = () => {
-    if (count > 1) {
-      setCount(count - 1)
-    }
-  }
+export default function Pizza({
+  id,
+  name,
+  price,
+  imageUrl,
+  quantity,
+  description,
+}: ProductProps) {
+  const [imgSize, setImgSize] = useState("1");
+  const [size, setSize] = useState("S");
+  const addToCard = useCardStore((state) => state.addToCard);
 
   const handleImgSize = (sizeSelect: string) => {
-    setImgSize(sizeSelect)
-    setSize(sizeSelect === "1" ? "S" : sizeSelect === "1.2" ? "M" : "L")
-  }
+    setImgSize(sizeSelect);
+    setSize(sizeSelect === "1" ? "S" : sizeSelect === "1.2" ? "M" : "L");
+  };
 
   const handleOrder = () => {
     const newOrder = {
       id,
-      image,
+      imageUrl,
       name,
       size,
-      price: prices,
-      count,
-    }
-    addToCard(newOrder)
-  }
+      price,
+      quantity,
+    };
+    addToCard(newOrder);
+  };
 
   return (
     <div className="p-2">
       <div className="pizza-item dark-gradient rounded-[20px] p-4 flex flex-col items-center justify-center gap-[15px]">
         <div className="relative w-full h-40 overflow-hidden">
           <Image
-            src={`http://localhost:3000${image}` || "/placeholder.svg"}
+            src={`http://localhost:3000/${imageUrl}` || "/placeholder.svg"}
             alt={name}
             fill
             style={{ objectFit: "contain", transform: `scale(${imgSize})` }}
           />
         </div>
         <h3 className="text-2xl font-bold text-natural">{name}</h3>
-        <p className="text-sm text-info text-center h-12 overflow-hidden">{description}</p>
+        <p className="text-sm text-info text-center h-12 overflow-hidden">
+          {description}
+        </p>
 
         <div className="pizza-size flex justify-center gap-[15px]">
           <span
@@ -100,24 +88,7 @@ export default function Pizza({ id, name, price, image, description }: PizzaProp
           + Ingredients
         </div>
 
-        <div className="pizza-price flex justify-between items-center w-full gap-[30px]">
-          <div className="price text-2xl font-medium text-natural">${prices}</div>
-          <div className="count flex items-center">
-            <button
-              onClick={handleDecrement}
-              className="w-[40px] h-[40px] rounded-full border-2 border-info text-natural bg-transparent transition-all duration-200 hover:bg-secondary hover:border-secondary"
-            >
-              -
-            </button>
-            <span className="mx-3 text-2xl text-natural">{count}</span>
-            <button
-              onClick={() => setCount(count + 1)}
-              className="w-[40px] h-[40px] rounded-full border-2 border-info text-natural bg-transparent transition-all duration-200 hover:bg-secondary hover:border-secondary"
-            >
-              +
-            </button>
-          </div>
-        </div>
+        <QuantitySelector product={{ id, name, price, imageUrl, quantity }} />
 
         <button
           onClick={handleOrder}
@@ -127,8 +98,5 @@ export default function Pizza({ id, name, price, image, description }: PizzaProp
         </button>
       </div>
     </div>
-  )
+  );
 }
-
-
-
