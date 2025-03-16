@@ -88,7 +88,12 @@ export default function Pizza({
           + Ingredients
         </div>
 
-        <QuantitySelector product={{ id, name, price, imageUrl, quantity }} />
+        <div className="flex justify-around w-full">
+          <span className="text-2xl font-bold text-natural">
+            ${price.toFixed(2)}
+          </span>
+          <QuantitySelector product={{ id, name, price, imageUrl, quantity }} />
+        </div>
 
         <button
           onClick={handleOrder}
