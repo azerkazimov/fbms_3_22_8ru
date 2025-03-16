@@ -15,7 +15,8 @@ export default function ButtonMenu({ name }: ButtonMenuProps) {
   const category = searchParams.get("category") || "Show all"
   const isActive = category === name
 
-  const handleClick = () => {
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault()
     const params = new URLSearchParams(searchParams)
     params.set("category", name)
     router.push(`${pathname}?${params.toString()}`)

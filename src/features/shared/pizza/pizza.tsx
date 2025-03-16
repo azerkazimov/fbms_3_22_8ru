@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from "react"
 import Image from "next/image"
-import useCardStore from "@/store/card-store"
+import useCardStore from "@/store/product-store"
 
 
 interface PizzaProps {

@@ -6,10 +6,10 @@ import { useState } from "react";
 
 import { Button } from "@/components/ui/button";
 
-import { ShoppingBag } from "lucide-react";
-import logo from "../../../../public/logo.png"
+import logo from "../../../../public/logo.png";
 import Image from "next/image";
 import Link from "next/link";
+import { Sidebar } from "@/features/shared/sidebar";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,12 +26,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between">
           {/* Logo */}
           <Link href="/" className="z-10">
-            <Image
-              src={logo}
-              alt="Pizza shop"
-              width={150}
-              height={50}
-            />
+            <Image src={logo} alt="Pizza shop" width={150} height={50} />
           </Link>
 
           {/* Mobile Menu Button */}
@@ -84,12 +79,7 @@ const Navbar = () => {
             <Button className="bg-gradient-to-r from-[#ff6432] to-[#ffa228] hover:opacity-90 text-white border-none">
               Login
             </Button>
-            <Link
-              href="/basket"
-              className="text-white hover:text-[#ff6432] transition-colors"
-            >
-              <ShoppingBag className="w-6 h-6" />
-            </Link>
+            <Sidebar />
           </div>
 
           {/* Mobile Menu */}
@@ -119,12 +109,8 @@ const Navbar = () => {
                 <Button className="bg-gradient-to-r from-[#ff6432] to-[#ffa228] hover:opacity-90 text-white border-none">
                   Login
                 </Button>
-                <Link
-                  href="/basket"
-                  className="text-white hover:text-[#ff6432] transition-colors"
-                >
-                  <ShoppingBag className="w-6 h-6" />
-                </Link>
+
+                <Sidebar />
               </li>
             </ul>
           </div>
