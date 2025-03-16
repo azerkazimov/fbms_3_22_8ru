@@ -76,9 +76,11 @@ const Navbar = () => {
 
           {/* Action Buttons */}
           <div className="hidden lg:flex items-center space-x-4 z-10">
-            <Button className="bg-gradient-to-r from-[#ff6432] to-[#ffa228] hover:opacity-90 text-white border-none">
-              Login
-            </Button>
+            <Link href="/auth/signin">
+              <Button className="bg-gradient-to-r from-[#ff6432] to-[#ffa228] hover:opacity-90 text-white border-none">
+                Login
+              </Button>
+            </Link>
             <Sidebar />
           </div>
 
@@ -106,9 +108,11 @@ const Navbar = () => {
                 </li>
               ))}
               <li className="pt-6 flex flex-col items-center space-y-4">
-                <Button className="bg-gradient-to-r from-[#ff6432] to-[#ffa228] hover:opacity-90 text-white border-none">
-                  Login
-                </Button>
+                <Link href="/auth/signin">
+                  <Button className="bg-gradient-to-r from-[#ff6432] to-[#ffa228] hover:opacity-90 text-white border-none">
+                    Login
+                  </Button>
+                </Link>
 
                 <Sidebar />
               </li>

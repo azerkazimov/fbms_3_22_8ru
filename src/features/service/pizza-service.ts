@@ -11,7 +11,7 @@ export interface Pizza {
 export async function getPizzas(): Promise<Pizza[]> {
   try {
     // Always fetch from our API route
-    const response = await fetch("/api/pizzas")
+    const response = await fetch(`${process.env.API_HOST}/api/pizzas`)
 
     if (!response.ok) {
       throw new Error(`Failed to fetch pizzas: ${response.status}`)
