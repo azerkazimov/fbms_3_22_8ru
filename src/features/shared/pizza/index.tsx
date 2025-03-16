@@ -9,7 +9,7 @@ export default async function PizzaList() {
   if (!response.ok) {
     // Handle error state - could return an error component
     return <div>Failed to load pizzas</div>
-  }
+  } 
 
   const pizzas: Pizza[] = await response.json()
 
