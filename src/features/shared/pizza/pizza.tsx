@@ -1,53 +1,43 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import Image from "next/image"
-import useCardStore from "@/store/product-store"
+import { useState } from "react";
+import Image from "next/image";
+import useCardStore from "@/store/product-store";
+import QuantitySelector from "../quantity-selector";
+import { PizzaProps } from "@/features/helpers/interfaces/pizza-props";
+import Link from "next/link";
 
-
-interface PizzaProps {
-  id: number
-  category: string
-  name: string
-  price: number
-  image: string
-  description: string
-}
-
-export default function Pizza({ id, name, price, image, description }: PizzaProps) {
-  const [count, setCount] = useState(1)
-  const fixPrice = price
-  const [prices, setPrice] = useState(fixPrice)
-  const [imgSize, setImgSize] = useState("1")
-  const [size, setSize] = useState("S")
-  const addToCard = useCardStore((state) => state.addToCard)
-
-  useEffect(() => {
-    setPrice(Number((count * fixPrice).toFixed(2)))
-  }, [count, fixPrice])
-
-  const handleDecrement = () => {
-    if (count > 1) {
-      setCount(count - 1)
-    }
-  }
+export default function Pizza({
+  id,
+  name,
+  price,
+  image,
+  description,
+  url,
+  rating,
+}: PizzaProps) {
+  const [imgSize, setImgSize] = useState("1");
+  const [size, setSize] = useState("S");
+  const addToCard = useCardStore((state) => state.addToCard);
 
   const handleImgSize = (sizeSelect: string) => {
-    setImgSize(sizeSelect)
-    setSize(sizeSelect === "1" ? "S" : sizeSelect === "1.2" ? "M" : "L")
-  }
+    setImgSize(sizeSelect);
+    setSize(sizeSelect === "1" ? "S" : sizeSelect === "1.2" ? "M" : "L");
+  };
 
   const handleOrder = () => {
     const newOrder = {
       id,
-      image,
+      imageUrl: image,
       name,
       size,
-      price: prices,
-      count,
-    }
-    addToCard(newOrder)
-  }
+      price,
+      quantity: 1,
+      url,
+      rating
+    };
+    addToCard(newOrder);
+  };
 
   return (
     <div className="p-2">
@@ -61,7 +51,9 @@ export default function Pizza({ id, name, price, image, description }: PizzaProp
           />
         </div>
         <h3 className="text-2xl font-bold text-natural">{name}</h3>
-        <p className="text-sm text-info text-center h-12 overflow-hidden">{description}</p>
+        <p className="text-sm text-info text-center h-12 overflow-hidden">
+          {description}
+        </p>
 
         <div className="pizza-size flex justify-center gap-[15px]">
           <span
@@ -100,35 +92,33 @@ export default function Pizza({ id, name, price, image, description }: PizzaProp
           + Ingredients
         </div>
 
-        <div className="pizza-price flex justify-between items-center w-full gap-[30px]">
-          <div className="price text-2xl font-medium text-natural">${prices}</div>
-          <div className="count flex items-center">
-            <button
-              onClick={handleDecrement}
-              className="w-[40px] h-[40px] rounded-full border-2 border-info text-natural bg-transparent transition-all duration-200 hover:bg-secondary hover:border-secondary"
-            >
-              -
-            </button>
-            <span className="mx-3 text-2xl text-natural">{count}</span>
-            <button
-              onClick={() => setCount(count + 1)}
-              className="w-[40px] h-[40px] rounded-full border-2 border-info text-natural bg-transparent transition-all duration-200 hover:bg-secondary hover:border-secondary"
-            >
-              +
-            </button>
-          </div>
+        <div className="flex justify-around w-full">
+          <h2 className="text-3xl text-primary">{price}</h2>
+          <QuantitySelector
+            product={{
+              id,
+              name,
+              price,
+              imageUrl: image,
+              description,
+              quantity: 1,
+            }}
+          />
         </div>
 
-        <button
-          onClick={handleOrder}
-          className="btn-order flex items-center justify-center w-[200px] h-[40px] mt-2 mb-5 rounded-[20px] bg-secondary text-inky transition-all duration-200 hover:bg-primary hover:font-bold"
-        >
-          Order Now
-        </button>
+        <div className="flex">
+          <button
+            onClick={handleOrder}
+            className="btn-order flex items-center justify-center w-[150px] h-[40px] mt-2 mb-5 rounded-[20px] bg-secondary text-inky transition-all duration-200 hover:bg-primary hover:font-bold"
+          >
+            Order Now
+          </button>
+
+          <button className="btn-order flex items-center justify-center w-[150px] h-[40px] mt-2 mb-5 rounded-[20px] text-inky transition-all duration-200 hover:bg-primary hover:font-bold">
+            <Link href={url}>Details</Link>
+          </button>
+        </div>
       </div>
     </div>
-  )
+  );
 }
-
-
-

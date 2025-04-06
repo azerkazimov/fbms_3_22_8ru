@@ -6,6 +6,7 @@ import { authOptions } from "./api/auth/[...nextauth]/route";
 import AuthProvider from "@/features/shared/providers/auth-provider";
 import { Provider } from "@radix-ui/react-tooltip";
 
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -35,6 +36,7 @@ export default async function RootLayout({
         <AuthProvider session={session}>
           <Provider>{children}</Provider>
         </AuthProvider>
+        
       </body>
     </html>
   );

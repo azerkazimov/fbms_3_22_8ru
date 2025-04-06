@@ -4,7 +4,7 @@ const nextConfig: NextConfig = {
   /* config options here */
 
   images: {
-    domains: ['localhost'],
+    domains: ['localhost', 'www.freeiconspng.com'],
   },
 };
 

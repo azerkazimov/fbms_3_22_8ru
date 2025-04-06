@@ -10,6 +10,7 @@ import logo from "../../../../public/logo.png";
 import Image from "next/image";
 import Link from "next/link";
 import { Sidebar } from "@/features/shared/sidebar";
+import ProfileButton from "@/features/shared/profile-button";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -76,11 +77,12 @@ const Navbar = () => {
 
           {/* Action Buttons */}
           <div className="hidden lg:flex items-center space-x-4 z-10">
-            <Link href="/auth/signin">
+            {/* <Link href="/auth/signin">
               <Button className="bg-gradient-to-r from-[#ff6432] to-[#ffa228] hover:opacity-90 text-white border-none">
                 Login
               </Button>
-            </Link>
+            </Link> */}
+            <ProfileButton/>
             <Sidebar />
           </div>
 
