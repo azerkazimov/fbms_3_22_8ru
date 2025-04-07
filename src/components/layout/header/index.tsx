@@ -1,31 +1,21 @@
 "use client";
 
 import { cn } from "@/lib/utils";
-
 import { useState } from "react";
-
 import { Button } from "@/components/ui/button";
 
 import logo from "../../../../public/logo.png";
 import Image from "next/image";
 import Link from "next/link";
 import { Sidebar } from "@/features/shared/sidebar";
-<<<<<<< HEAD
 import ProfileButton from "@/features/shared/profile-button";
-=======
->>>>>>> ae120498890c87efd76585c4dcd7c9237143120d
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
-
   const toggleMenu = () => setIsOpen(!isOpen);
 
   return (
-    <nav
-      className={cn(
-        "fixed top-0 left-0 w-full z-50 py-5 transition-all duration-600"
-      )}
-    >
+    <nav className={cn("fixed top-0 left-0 w-full z-50 py-5 transition-all duration-600")}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between">
           {/* Logo */}
@@ -61,14 +51,13 @@ const Navbar = () => {
             </button>
           </div>
 
+          {/* Desktop Navigation */}
           <ul className="hidden lg:flex items-center space-x-8">
             {["Home", "Menu", "Events", "About us"].map((item) => (
               <li key={item}>
                 <button
                   onClick={() => {
-                    document
-                      .getElementById(item.toLowerCase().replace(" ", "-"))
-                      ?.scrollIntoView({ behavior: "smooth" });
+                    document.getElementById(item.toLowerCase().replace(" ", "-"))?.scrollIntoView({ behavior: "smooth" });
                   }}
                   className="text-white hover:text-[#ff6432] transition-colors duration-200 cursor-pointer"
                 >
@@ -80,20 +69,8 @@ const Navbar = () => {
 
           {/* Action Buttons */}
           <div className="hidden lg:flex items-center space-x-4 z-10">
-<<<<<<< HEAD
-            {/* <Link href="/auth/signin">
-              <Button className="bg-gradient-to-r from-[#ff6432] to-[#ffa228] hover:opacity-90 text-white border-none">
-                Login
-              </Button>
-            </Link> */}
-            <ProfileButton/>
+            <ProfileButton />
             <Sidebar />
-=======
-            <Button className="bg-gradient-to-r from-[#ff6432] to-[#ffa228] hover:opacity-90 text-white border-none">
-              Login
-            </Button>
-            <Sidebar/>
->>>>>>> ae120498890c87efd76585c4dcd7c9237143120d
           </div>
 
           {/* Mobile Menu */}
@@ -108,9 +85,7 @@ const Navbar = () => {
                 <li key={item}>
                   <button
                     onClick={() => {
-                      document
-                        .getElementById(item.toLowerCase().replace(" ", "-"))
-                        ?.scrollIntoView({ behavior: "smooth" });
+                      document.getElementById(item.toLowerCase().replace(" ", "-"))?.scrollIntoView({ behavior: "smooth" });
                       setIsOpen(false);
                     }}
                     className="text-white text-xl hover:text-[#ff6432] transition-colors duration-200"
