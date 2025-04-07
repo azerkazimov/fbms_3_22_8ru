@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+<<<<<<< HEAD
 import { getServerSession } from "next-auth";
 import { authOptions } from "./api/auth/[...nextauth]/route";
 import AuthProvider from "@/features/shared/providers/auth-provider";
 import { Provider } from "@radix-ui/react-tooltip";
 
+=======
+>>>>>>> ae120498890c87efd76585c4dcd7c9237143120d
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,10 +36,15 @@ export default async function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+<<<<<<< HEAD
         <AuthProvider session={session}>
           <Provider>{children}</Provider>
         </AuthProvider>
         
+=======
+        
+        {children}
+>>>>>>> ae120498890c87efd76585c4dcd7c9237143120d
       </body>
     </html>
   );

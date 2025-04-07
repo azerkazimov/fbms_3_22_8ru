@@ -9,7 +9,11 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { ShoppingCart } from "lucide-react";
+<<<<<<< HEAD
 import useCardStore from "@/store/product-store";
+=======
+import useCardStore from "@/store/card-store";
+>>>>>>> ae120498890c87efd76585c4dcd7c9237143120d
 import { ProductItem } from "./product-item";
 
 export function Sidebar() {

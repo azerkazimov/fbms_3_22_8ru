@@ -6,7 +6,7 @@ import Banner from "./banner"
 
 export default function Hero() {
   return (
-    <div id="home" className="mt-[80px]">
+    <div id="home" className="mt-[50px]">
       <div className="container mx-auto">
         <div className="flex flex-col lg:flex-row">
           <div className="w-full lg:w-1/2 p-5 flex flex-col justify-center items-center">

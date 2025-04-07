@@ -1,21 +1,36 @@
 "use client";
 
+<<<<<<< HEAD
 import { useState } from "react";
 import Image from "next/image";
 import useCardStore from "@/store/product-store";
 import QuantitySelector from "../quantity-selector";
 import { PizzaProps } from "@/features/helpers/interfaces/pizza-props";
 import Link from "next/link";
+=======
+import { ProductProps } from "@/features/helpers/interfaces/product-props";
+import useCardStore from "@/store/card-store";
+import Image from "next/image";
+import { useState } from "react";
+import QuantitySelector from "../quantity-selector";
+>>>>>>> ae120498890c87efd76585c4dcd7c9237143120d
 
 export default function Pizza({
   id,
   name,
   price,
+<<<<<<< HEAD
   image,
   description,
   url,
   rating,
 }: PizzaProps) {
+=======
+  imageUrl,
+  quantity,
+  description,
+}: ProductProps) {
+>>>>>>> ae120498890c87efd76585c4dcd7c9237143120d
   const [imgSize, setImgSize] = useState("1");
   const [size, setSize] = useState("S");
   const addToCard = useCardStore((state) => state.addToCard);
@@ -28,6 +43,7 @@ export default function Pizza({
   const handleOrder = () => {
     const newOrder = {
       id,
+<<<<<<< HEAD
       imageUrl: image,
       name,
       size,
@@ -35,6 +51,13 @@ export default function Pizza({
       quantity: 1,
       url,
       rating
+=======
+      imageUrl,
+      name,
+      size,
+      price,
+      quantity,
+>>>>>>> ae120498890c87efd76585c4dcd7c9237143120d
     };
     addToCard(newOrder);
   };
@@ -44,7 +67,7 @@ export default function Pizza({
       <div className="pizza-item dark-gradient rounded-[20px] p-4 flex flex-col items-center justify-center gap-[15px]">
         <div className="relative w-full h-40 overflow-hidden">
           <Image
-            src={`http://localhost:3000${image}` || "/placeholder.svg"}
+            src={`http://localhost:3000/${imageUrl}` || "/placeholder.svg"}
             alt={name}
             fill
             style={{ objectFit: "contain", transform: `scale(${imgSize})` }}
@@ -93,6 +116,7 @@ export default function Pizza({
         </div>
 
         <div className="flex justify-around w-full">
+<<<<<<< HEAD
           <h2 className="text-3xl text-primary">{price}</h2>
           <QuantitySelector
             product={{
@@ -104,6 +128,12 @@ export default function Pizza({
               quantity: 1,
             }}
           />
+=======
+          <span className="text-2xl font-bold text-natural">
+            ${price.toFixed(2)}
+          </span>
+          <QuantitySelector product={{ id, name, price, imageUrl, quantity }} />
+>>>>>>> ae120498890c87efd76585c4dcd7c9237143120d
         </div>
 
         <div className="flex">
