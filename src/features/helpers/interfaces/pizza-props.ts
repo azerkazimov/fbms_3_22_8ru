@@ -3,10 +3,10 @@ export interface PizzaProps {
     category: string;
     name: string;
     price: number;
-    image: string;
+    image?: string;
     description: string;
     count?: number;
     quantity?: number;
-    url: string;
+    url?: string;
     rating?: number;
 }

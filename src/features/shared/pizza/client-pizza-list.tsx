@@ -32,7 +32,7 @@ export default function ClientPizzaList({ pizzas }: ClientPizzaListProps) {
           price={pizza.price}
           image={pizza.image}
           description={pizza.description}
-          url={pizza.url}
+          url={pizza.url || ""}
           rating={pizza.rating}
         />
       ))}
