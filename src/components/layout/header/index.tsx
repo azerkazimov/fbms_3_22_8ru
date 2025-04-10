@@ -9,6 +9,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { Sidebar } from "@/features/shared/sidebar";
 import ProfileButton from "@/features/shared/profile-button";
+import SearchBar from "@/features/shared/search-bar";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -69,6 +70,7 @@ const Navbar = () => {
 
           {/* Action Buttons */}
           <div className="hidden lg:flex items-center space-x-4 z-10">
+            <SearchBar/>
             <ProfileButton />
             <Sidebar />
           </div>
