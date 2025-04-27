@@ -3,8 +3,13 @@
 import Button from "@/features/shared/button"
 import Section from "@/features/shared/section"
 import Banner from "./banner"
+import { useTranslations } from "next-intl"
 
 export default function Hero() {
+
+  const t = useTranslations("HomePage")
+
+
   return (
     <div id="home" className="mt-[50px]">
       <div className="container mx-auto">
@@ -13,6 +18,7 @@ export default function Hero() {
             <div className="w-full">
               <Section head="The Faster Pizza Delivery" />
               <div className="container">
+              <h1>{t('title')}</h1>
                 <p className="py-3 text-gray-600">
                   We will deliver juicy pizza for your family in 30 minutes, if the courier is late - pizza is free!
                 </p>
