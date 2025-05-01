@@ -1,11 +1,37 @@
+import { PrismaClient } from "@prisma/client"
 import { NextResponse } from "next/server"
-import { pizzaData } from "@/features/shared/data/pizzas"
+
+const prisma = new PrismaClient()
 
 export async function GET() {
   try {
-    return NextResponse.json(pizzaData)
-  } catch (error) {
-    console.error("Error in pizzas API route:", error)
-    return NextResponse.json({ error: "Failed to fetch pizza data" }, { status: 500 })
+    const pizzas = await prisma.pizza.findMany({
+      include:{
+        category:true,
+        ingredients:{
+          include:{
+            ingredient:true
+          }
+        },
+      }
+    })
+
+    const formattedPizzas = pizzas.map((pizza)=>({
+      id:pizza.id,
+      name:pizza.name,
+      description:pizza.description,
+      price:pizza.price,
+      image:pizza.imageUrl,
+      size: pizza.size,
+      url: pizza.url,
+      rating: pizza.rating,
+      category: pizza.category.name,
+    }))
+
+    return NextResponse.json(formattedPizzas)
+
+  } catch (err) {
+    console.error(err);
+    return NextResponse.json({ error: "Failed to fetch pizzas" }, { status: 500 })
   }
 }

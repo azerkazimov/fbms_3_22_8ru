@@ -5,21 +5,42 @@ export interface Pizza {
   price: number
   image: string
   description: string
+  size: string
+  url: string
+  rating: number
+}
+
+export interface PizzaWithIngredients extends Pizza {
+  ingredients?: Array<{
+    name: string
+    isVegetarian: boolean
+    amount?: string
+  }>
 }
 
 
 export async function getPizzas(): Promise<Pizza[]> {
-  try {
-    // Always fetch from our API route
-    const response = await fetch(`${process.env.API_HOST}/api/pizzas`)
-
-    if (!response.ok) {
-      throw new Error(`Failed to fetch pizzas: ${response.status}`)
-    }
-
-    return response.json()
-  } catch (error) {
-    console.error("Error fetching pizzas:", error)
-    return []
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || ""}/pizzas`)
+  if (!response.ok) {
+    throw new Error("Failed to fetch pizzas")
   }
+  return response.json()
 }
+
+export async function getPizzaById(id: number): Promise<PizzaWithIngredients> {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || ""}/pizzas/${id}`)
+  if (!response.ok) {
+    throw new Error("Failed to fetch pizza")
+  }
+  return response.json()
+}
+
+export async function getPizzaByCategory(category: string): Promise<Pizza[]> {
+  const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || ""}/pizzas?category=${category}`)
+  if (!response.ok) {
+    throw new Error("Failed to fetch pizzas")
+  }
+  return response.json()
+}
+
+
