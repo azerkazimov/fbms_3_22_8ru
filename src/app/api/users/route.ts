@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "../../../../prisma/prisma-client";
 import bcrypt from "bcryptjs";
-import { formRegisterSchema } from "@/app/(no-navigation)/auth/schema";
+import { formRegisterSchema } from "@/app/[locale]/(no-navigation)/auth/schema";
 
 export async function GET() {
   // SELECT * FROM users WHERE email = 'email'

@@ -10,6 +10,7 @@ import Link from "next/link";
 import { Sidebar } from "@/features/shared/sidebar";
 import ProfileButton from "@/features/shared/profile-button";
 import SearchBar from "@/features/shared/search-bar";
+import LanguageSwitcher from "@/features/shared/language-switcher";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -71,6 +72,7 @@ const Navbar = () => {
           {/* Action Buttons */}
           <div className="hidden lg:flex items-center space-x-4 z-10">
             <SearchBar/>
+            <LanguageSwitcher/>
             <ProfileButton />
             <Sidebar />
           </div>

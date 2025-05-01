@@ -16,13 +16,12 @@ export default function Hero() {
         <div className="flex flex-col lg:flex-row">
           <div className="w-full lg:w-1/2 p-5 flex flex-col justify-center items-center">
             <div className="w-full">
-              <Section head="The Faster Pizza Delivery" />
+              <Section head={t("title")} />
               <div className="container">
-              <h1>{t('title')}</h1>
                 <p className="py-3 text-gray-600">
-                  We will deliver juicy pizza for your family in 30 minutes, if the courier is late - pizza is free!
+                  {t("description")}
                 </p>
-                <p className="py-3 text-gray-600">Cooking process:</p>
+                <p className="py-3 text-gray-600">{t("video.title")}</p>
                 <iframe
                   src="https://www.youtube.com/embed/8Q_9h6VKm9c?si=hm2OmM08FRWLzDxU"
                   title="YouTube video player"
@@ -32,6 +31,7 @@ export default function Hero() {
                   referrerPolicy="strict-origin-when-cross-origin"
                   allowFullScreen
                 ></iframe>
+                <p className="py-3 text-gray-600">{t("video.description")}</p>
 
                 <div className="flex items-center gap-4 relative mt-4">
                   <Button name="To order" />
