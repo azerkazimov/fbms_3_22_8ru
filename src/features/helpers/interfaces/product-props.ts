@@ -1,11 +1,11 @@
 export interface ProductProps {
-    id?: number;
+    id: number;
     name: string;
-    price?: number;
+    price: number;
     imageUrl?: string;
     quantity?: number;
     size?: string;
-    category?: string;
+    category: string;
     path?: string
     description?: string;
     stockCount?: number;

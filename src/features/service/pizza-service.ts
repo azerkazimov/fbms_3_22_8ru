@@ -42,5 +42,3 @@ export async function getPizzaByCategory(category: string): Promise<Pizza[]> {
   }
   return response.json()
 }
-
-

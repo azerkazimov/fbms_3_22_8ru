@@ -17,6 +17,9 @@ export default function SearchBar() {
     const [isLoading, setIsLoading] = useState(false);
     const [searchResults, setSearchResults] = useState<ProductProps[]>();
 
+
+    
+
     useEffect(() => {
         const timer = setTimeout(() => {
             if (searchQuery) {
