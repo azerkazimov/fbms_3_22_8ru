@@ -1,10 +1,14 @@
 {
-    "HomePage": {
-      "title": "The Faster Pizza Delivery",
-      "description": "We will deliver juicy pizza for your family in 30 minutes, if the courier is late - pizza is free!",
-      "video": {
-        "title": "Cooking process:",
-        "description": "See how we cook pizza in 16 minutes, subscribe our youtube chanel"
-      }
+  "HomePage": {
+    "title": "The Faster Pizza Delivery",
+    "description": "We will deliver juicy pizza for your family in 30 minutes, if the courier is late - pizza is free!",
+    "video": {
+      "title": "Cooking process:",
+      "description": "See how we cook pizza in 16 minutes, subscribe our youtube chanel"
+    },
+    "mail": {
+      "title": "Contact us",
+      "description": "Fill out the form below, and we will get back to you as soon as possible."
     }
   }
+}

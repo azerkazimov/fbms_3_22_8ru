@@ -2,6 +2,7 @@ import About from "@/features/main/components/about/about";
 import Events from "@/features/main/components/events";
 import Hero from "@/features/main/components/hero";
 import Menu from "@/features/main/components/menu";
+import Mail from "@/features/shared/mail";
 
 export default function Main() {
   return (
@@ -9,6 +10,7 @@ export default function Main() {
       <Hero />
       <Menu />
       <Events />
+      <Mail/>
       <About />
     </>
   );
